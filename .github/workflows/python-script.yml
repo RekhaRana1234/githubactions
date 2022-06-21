@@ -1,27 +1,17 @@
-name: Run Script
-
+name: Node continuous integration
+ 
 on:
-  push:
-
+  pull_request:
+    branches: [ master ]
+ 
 jobs:
-  build:
+  test_pull_request:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
-      - uses: RekhaRana1234/githubactions
-        id: script
+      - uses: actions/setup-node@v1
         with:
-          fail-on-error: false
-          script: |
-            print("Doing something that will fail")
-            a = []
-            a[10]
-      - name: Print errors
-        if: steps.script.outputs.error == 'true'
-        run: |
-          printenv "SCRIPT_STDOUT"
-          printenv "SCRIPT_STDERR"
-        env:
-          SCRIPT_STDOUT: ${{ steps.script.outputs.stdout }}
-          SCRIPT_STDERR: ${{ steps.script.outputs.stderr }} 
+          node-version: 16
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
