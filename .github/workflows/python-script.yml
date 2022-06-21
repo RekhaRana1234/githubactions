@@ -1,16 +1,15 @@
-name: hello-world
-on: 
-  push:
-    branches: [master]
-  pull_request:
-    branches: [master]
+name: Run Script
 
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: my-step
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
       - uses: RekhaRana1234/githubactions@v1
