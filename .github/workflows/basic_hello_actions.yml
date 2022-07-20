@@ -1,11 +1,11 @@
 name: py
 on: push
 jobs:
-  build:
+  list-GitHub-Actions:
     runs-on: ubuntu-latest
    
    steps:
-     -name: checkout repe content
+     -name: checkout repo content
       uses: actions/checkout@v2
      -name: setup python
       uses: actions/setup-python@v2
