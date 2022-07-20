@@ -3,8 +3,7 @@ on: [push]
 jobs:
   builds:
     runs-on: ubuntu-latest
-    
-    
+   
    steps:
      -name: checkout repe content
       uses: actions/checkout@v2
